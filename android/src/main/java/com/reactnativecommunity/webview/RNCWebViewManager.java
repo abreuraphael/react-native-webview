@@ -677,7 +677,10 @@ public class RNCWebViewManager extends SimpleViewManager<WebView> {
           throw new RuntimeException("Arguments for loading an url are null!");
         }
         ((RNCWebView) root).progressChangedFilter.setWaitingForCommandLoadUrl(false);
-        root.loadUrl(args.getString(0));
+        HashMap<String, String> headerMap = new HashMap<>();
+        headerMap.put("referer", "http://btgbankers.btgpactual.com");
+
+        root.loadUrl(args.getString(0), headerMap);
         break;
       case COMMAND_FOCUS:
         root.requestFocus();
